@@ -1,0 +1,231 @@
+/* <system-statusbar> styling */
+
+:host {
+  color: env(theme-wallpaper-vibrant);
+  font-size: 1rem;
+  height: var(--statusbar-height);
+  transition: background-color 0.25s;
+  --pb-color: #8000d7;
+  --pb-background: rgb(37, 0, 62);
+}
+
+:host .homescreen.session-desktop .left > * {
+  display: none;
+}
+
+:host(.fullscreen) {
+  display: none;
+}
+
+:host(.high-luminance) {
+  color: env(theme-wallpaper-muted);
+}
+
+:host(.transparent) {
+  color: env(theme-wallpaper-accent);
+}
+
+:host(.privatebrowsing) {
+  color: var(--pb-color);
+  background-color: var(--pb-background);
+}
+
+:host .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  //grid-gap: 0.25em;
+  justify-content: center;
+  height: 100%;
+
+  text-align: center;
+}
+
+:host .container:not(.homescreen) {
+  grid-template-columns: 1fr min-content;
+}
+
+sl-icon {
+  font-size: 1.5rem;
+}
+
+.container.homescreen sl-icon:not(.homescreen-icon) {
+  display: none;
+}
+
+.container:not(.homescreen) .center {
+  display: none;
+}
+
+.container.content sl-icon:not(.content-icon) {
+  display: none;
+}
+
+.container.carousel sl-icon.carousel {
+  display: initial;
+}
+
+.container.carousel sl-icon.hidden {
+  display: none;
+}
+
+.container.carousel {
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+.center {
+  //display: flex;
+  align-items: center;
+  justify-content: space-around;
+  grid-gap: 0.25em;
+
+  //background-color: blue;
+  position: absolute;
+  right: 45%;
+  width: 10%;
+  text-align: center;
+  bottom: 0px;
+}
+
+.left {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  //display: flex;
+  align-items: center;
+  grid-gap: 0.25em;
+
+  //background-color: burlywood;
+  position: absolute;
+  left: 0%;
+  width: 30%;
+  bottom: 0px;
+}
+
+.left-text {
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.right {
+  //display: flex;
+  align-items: right;
+  justify-content: flex-end;
+  //grid-gap: 0.25em;
+
+  //background-color: darkcyan;
+  position: absolute;
+  right: 0%;
+  width: 30%;
+  text-align: right;
+  bottom: 0px;
+}
+
+.insecure {
+  color: orange;
+}
+
+.battery-icon {
+  transform: rotate(-90deg);
+}
+
+.low-battery {
+  color: red;
+}
+
+/* sl-icon.attention {
+  color: orangered;
+} */
+
+sl-icon {
+  font-size: 1.5em;
+}
+
+sl-icon:not(.static):not(.disabled):active {
+  background-color: white;
+  transition: background-color 1s;
+}
+
+sl-badge::part(base) {
+  font-size: 1em;
+}
+
+sl-badge[variant="neutral"]::part(base) {
+  background-color: transparent;
+  border-color: transparent;
+  color: env(theme-wallpaper-vibrant);
+}
+
+sl-badge[variant="primary"]::part(base) {
+  background: radial-gradient(var(--sl-color-primary-700), transparent);
+  border-color: transparent;
+}
+
+:host(.high-luminance) sl-badge[variant="neutral"]::part(base),
+:host(.high-luminance) sl-badge[variant="primary"]::part(base) {
+  color: env(theme-wallpaper-muted);
+}
+
+:host(.transparent) sl-badge[variant="neutral"]::part(base),
+:host(.transparent) sl-badge[variant="primary"]::part(base) {
+  color: env(theme-wallpaper-accent);
+}
+
+:host(.privatebrowsing) sl-badge[variant="neutral"]::part(base),
+:host(.privatebrowsing) sl-badge[variant="primary"]::part(base) {
+  color: var(--pb-color);
+}
+
+:host(.privatebrowsing) .favicon {
+  color: var(--pb-color);
+}
+
+.go-back.disabled {
+  display: none;
+}
+
+.available-notifications {
+  border-radius: 99999999px;
+  background-color: var(--icon-background-active);
+}
+
+.hidden {
+  display: none;
+}
+
+.favicon {
+  width: 1.5em;
+  border-radius: 40%;
+  margin-left: 0.25em;
+}
+
+.container.homescreen .favicon {
+  display: none;
+}
+
+.frame-list {
+  display: flex;
+  align-items: center;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  border-left: 1px solid currentColor;
+  max-width: 40vw;
+}
+
+.frame-list img {
+  cursor: pointer;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+  scroll-snap-align: start;
+}
+
+.frame-list img.active {
+  opacity: 0.1;
+}
+
+.container.homescreen .frame-list .favicon {
+  display: initial;
+}
+
