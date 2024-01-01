@@ -3,7 +3,6 @@
   "description": "Volla styled Homescreen",
   "orientation": "default",
   "start_url": "/index.html",
-  "display": "fullscreen",
   "b2g_features": {
     "core": true,
     "role": "homescreen",
