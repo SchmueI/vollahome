@@ -121,6 +121,7 @@ html, body {
 .dot .springText{
     display: none;
     font-size: 1.5em;
+    color: white;
 }
 
 .dot .springText:hover{
